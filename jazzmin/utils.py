@@ -222,6 +222,20 @@ def make_menu(
                 }
             )
 
+        # Modal links
+        elif "buttons" in link:
+            menu.append(
+                {
+                    "name": link.get("name", "unspecified"),
+                    "url": "",
+                    "children": None,
+                    "new_window": link.get("new_window", False),
+                    "icon": link.get("icon", options["default_icon_children"]),
+                    "description": link.get("description", ""),
+                    "buttons": link.get("buttons", []),
+                }
+            )
+
     return menu
 
 
