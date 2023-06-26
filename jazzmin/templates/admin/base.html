@@ -82,6 +82,17 @@
                                     <a class="dropdown-item" href="{{ child.url }}" {% if link.new_window %}target="_blank"{% endif %}>{{ child.name }}</a>
                                 {% endfor %}
                             </div>
+                        {% elif link.buttons %}
+                            <a class="nav-link" onclick="openModal()">{{ link.name }}</a>
+                            <div id="myModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close" onclick="closeModal()">&times;</span>
+                                    <h4 class="m-2">{{ link.description }}</h4>
+                                    {% for button in link.buttons %}
+                                        <button class="btn btn-lg btn-{{ button.color }} modal-button" onclick="{{ button.onclick }}">{{ button.name }}</button>
+                                    {% endfor %}                                    
+                                </div>
+                            </div>
                         {% else %}
                             <a href="{{ link.url }}" class="nav-link" {% if link.new_window %}target="_blank"{% endif %}>{{ link.name }}</a>
                         {% endif %}
